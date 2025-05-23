@@ -49,9 +49,11 @@ const CreatePage = () => {
     event.preventDefault();
     try {
       await axios.post(`${baseAPI}/books`, bookData);
+      alert("Book added successfully")
       navigate("/");
     } catch (exception) {
       console.log(error);
+      alert("Something went wrong.Try again.")
     }
   };
 

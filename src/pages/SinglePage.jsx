@@ -7,7 +7,7 @@ import Button from "../components/Button";
 const SinglePage = () => {
   const { id } = useParams();
   const [book, setbook] = useState({});
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const getsingleBook = async () => {
     try {
       const response = await axios.get(
@@ -19,14 +19,14 @@ const SinglePage = () => {
     }
   };
 
-  const deleteBookById = async() => {
+  const deleteBookById = async () => {
     try {
-      await axios.delete(`http://localhost:4000/api/v1/books/${id}`)
-      navigate('/')
+      await axios.delete(`http://localhost:4000/api/v1/books/${id}`);
+      navigate("/");
     } catch (exception) {
-      console.log(exception)
+      console.log(exception);
     }
-  }
+  };
 
   useEffect(() => {
     getsingleBook();
@@ -63,11 +63,6 @@ const SinglePage = () => {
               <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
                 {book.bookName}
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
-                ante justo. Integer euismod libero id mauris malesuada
-                tincidunt.
-              </p>
               <div className="flex mb-4">
                 <div className="mr-4">
                   <span className="font-bold text-gray-700 dark:text-gray-300">
@@ -82,7 +77,7 @@ const SinglePage = () => {
                     Author:{" "}
                   </span>
                   <span className="text-gray-600 dark:text-gray-300">
-                   {book.bookAuthor}
+                    {book.bookAuthor}
                   </span>
                 </div>
                 <div className="mr-4">
@@ -90,35 +85,26 @@ const SinglePage = () => {
                     Genre:{" "}
                   </span>
                   <span className="text-gray-600 dark:text-gray-300">
-                   {book.bookGenre}
+                    {book.bookGenre}
                   </span>
                 </div>
               </div>
-             
+
               <div>
                 <span className="font-bold text-gray-700 dark:text-gray-300">
-                Book Description:
+                  Book Description:
                 </span>
                 <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  sed ante justo. Integer euismod libero id mauris malesuada
-                  tincidunt. Vivamus commodo nulla ut lorem rhoncus aliquet.
-                  Duis dapibus augue vel ipsum pretium, et venenatis sem
-                  blandit. Quisque ut erat vitae nisi ultrices placerat non eget
-                  velit. Integer ornare mi sed ipsum lacinia, non sagittis
-                  mauris blandit. Morbi fermentum libero vel nisl suscipit, nec
-                  tincidunt mi consectetur.
+                  {book.bookDescription}
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <div className="mt-3">
-           <Button title="edit" onClick={() => navigate('/edit-page/'+id)}/>
-         </div>
-         <div className="mt-3">
-           <Button title="delete" onClick={deleteBookById}/>
-         </div>
+        <div className="mt-3 flex justify-between mx-4" >
+          <Button title="edit" onClick={() => navigate("/edit-page/" + id)} />
+          <Button title="delete" onClick={deleteBookById} />
+        </div>
       </div>
     </>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import Form from "../components/Form";
 
 const EditPage = () => {
   const { id } = useParams();
@@ -46,7 +47,7 @@ const EditPage = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-white rounded-lg shadow relative m-10">
+     {/*  <div className="bg-white rounded-lg shadow relative m-10">
         <div className="flex items-start justify-between p-5 border-b border-gray-200 rounded-t">
           <h3 className="text-xl font-semibold">Edit Book</h3>
           <button
@@ -172,7 +173,9 @@ const EditPage = () => {
             </div>
           </form>
         </div>
-      </div>
+      </div> */}
+
+      <Form title="edit" handleChange={handleChange} handleSubmit={handleSubmit} book={book}/>
     </>
   );
 };
